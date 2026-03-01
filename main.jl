@@ -3,6 +3,8 @@
 # 積項を共有しない場合(non_shared)と共有する場合(shared)の両方の最小化結果を出力する。
 # -------------------------------------------------------------------------
 
+using Random
+
 include("for_println.jl")   # 出力用 
 include("read_benchmark.jl") # plaファイルから、真理値ベクトルを読み込むファイル
 
@@ -21,7 +23,7 @@ m_vec = [
 ]
 =#
 
-n, m, m_vec = pla_to_m("ALU.pla") # pla多出力関数読み込み
+n, m, m_vec = pla_to_m("Sum.pla") # pla多出力関数読み込み
 
 # ---------------------------------------------------------
 # m_vec の中からランダムに k 個を 2 (don't-care) に書き換える
@@ -294,6 +296,7 @@ function find_min_s_2(n, w, d_all)
 end
 
 # --- 割り当て探索関数呼び出し ---
+# find_min_ns : 積項を共有しない場合 (積項数のみで評価)
 w_ns, polarity_vector_ns, assign_d_ns = find_min_ns(n, w, d_all, threshold)
 # find_min_s_1 : 出力全体で極性を固定しない場合
 # find_min_s_2 : 出力全体で極性を固定する場合
