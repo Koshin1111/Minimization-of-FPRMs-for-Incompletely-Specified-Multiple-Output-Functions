@@ -3,12 +3,11 @@ JULIA = julia
 MAIN = main.jl
 
 # 実行されるデフォルトのターゲット
-all:
-	run
+all: run
 
 # 実行コマンド
 run:
-	$(JULIA) $(mAIN)
+	$(JULIA) $(MAIN)
 
 # パッケージのインストール
 # setup:
